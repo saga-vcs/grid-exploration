@@ -13,7 +13,20 @@ async function generateData() {
   var i = 0;
   var tableData = [];
   for (i; i<1000000; i++) {
-    tableData.push({make: i, model: i, price: i})
+    tableData.push({
+        col1: i, 
+        col2: i, 
+        col3: i,
+        col4: i,
+        col5: i,
+        col6: i,
+        col7: i,
+        col8: i,
+        col9: i,
+        col10: i,
+        col11: i,
+        col12: i,
+    })
   }
 
   var finishGenerateDataTime = performance.now()
@@ -30,9 +43,20 @@ class App extends React.Component {
     super(props);
     this.state = {
       rowData: [
-        {make: "Toyota", model: "Celica", price: 35000},
-        {make: "Ford", model: "Mondeo", price: 32000},
-        {make: "Porsche", model: "Boxter", price: 72000}
+        {
+          col1: 35000, 
+          col2: 35000, 
+          col3: 35000,
+          col4: 35000,
+          col5: 35000,
+          col6: 35000,
+          col7: 35000,
+          col8: 35000,
+          col9: 35000,
+          col10: 35000,
+          col11: 35000,
+          col12: 35000,
+        }
       ]
     };
 
@@ -56,12 +80,21 @@ class App extends React.Component {
       <>
         <div>
           <button onClick={(e) => this.loadData()}>load data</button>
-          <div className="ag-theme-alpine" style={ {height: '200px', width: '600px'} }>
+          <div className="ag-theme-alpine" style={ {height: '200px', width: '3000px'} }>
             <AgGridReact
                 rowData={this.state.rowData}>
-                <AgGridColumn field="make"></AgGridColumn>
-                <AgGridColumn field="model"></AgGridColumn>
-                <AgGridColumn field="price"></AgGridColumn>
+                <AgGridColumn field="col1"></AgGridColumn>
+                <AgGridColumn field="col2"></AgGridColumn>
+                <AgGridColumn field="col3"></AgGridColumn>
+                <AgGridColumn field="col4"></AgGridColumn>
+                <AgGridColumn field="col5"></AgGridColumn>
+                <AgGridColumn field="col6"></AgGridColumn>
+                <AgGridColumn field="col7"></AgGridColumn>
+                <AgGridColumn field="col8"></AgGridColumn>
+                <AgGridColumn field="col9"></AgGridColumn>
+                <AgGridColumn field="col10"></AgGridColumn>
+                <AgGridColumn field="col11"></AgGridColumn>
+                <AgGridColumn field="col12"></AgGridColumn>
             </AgGridReact>
           </div>
         </div>
