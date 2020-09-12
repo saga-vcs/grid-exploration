@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { HotTable } from "@handsontable/react";
+import Handsontable from "handsontable";
 import * as serviceWorker from './serviceWorker';
 
 import "handsontable/dist/handsontable.min.css"; 
@@ -22,6 +23,13 @@ async function generateData() {
   return tableData
 }; 
 
+function verticalScrolling(hotTable) {
+  console.log("veritcal scrolling")
+  //var last = hotTable.getPlugin('AutoRowSize').getLastVisibleRow();
+  //console.log(last);
+}
+
+
 class App extends React.Component {
 
   constructor(props) {
@@ -30,7 +38,8 @@ class App extends React.Component {
       hotSettings: {
         data: [],
         rowHeaders: true,
-        licenseKey: "non-commercial-and-evaluation"
+        licenseKey: "non-commercial-and-evaluation",
+        autoRowSize: true
       }
     };
 
@@ -58,12 +67,17 @@ class App extends React.Component {
   render() {
     const tableSettings = this.state.hotSettings;
 
+    var hotTable = (<HotTable settings={tableSettings}></HotTable>)
+
+    // attempt to register an event handler for scrolling
+    //Handsontable.hooks.add('afterScrollVertically', verticalScrolling(hotTable));
+
     return (
       <>
         <div>
           <button onClick={(e) => this.loadData()}>load data</button>
+          {hotTable}
         </div>
-        <HotTable settings={tableSettings}></HotTable>
       </>
     );
   }
